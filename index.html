@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>interpolated scrolling</title>
+		<style>
+			:root {
+				--background-color: rgb(245, 245, 245);
+				--text-color: rgb(50, 50, 50);
+			}
+
+			html,
+			body {
+				background-color: var(--background-color);
+				color: var(--text-color);
+				font-family: sans-serif;
+				font-size: 1em;
+				margin: 0;
+				padding: 0;
+				position: relative;
+			}
+
+			main {
+				display: block;
+				height: 100vh;
+				left: 0;
+				overflow: hidden;
+				position: fixed;
+				top: 0;
+				width: 100vw;
+				will-change: filter;
+			}
+
+			#content {
+				font-size: 2em;
+				line-height: 2.2em;
+				margin: auto;
+				max-width: 800px;
+			}
+
+			p {
+				margin: 50px 0;
+			}
+
+			p::first-letter {
+				font-size: 3em;
+				font-weight: bold;
+			}
+
+			#settings {
+				background-color: rgba(0, 0, 0, 0.5);
+				color: var(--text-color);
+				inset-block-start: 3px;
+				inset-inline-start: 3px;
+				padding: 10px;
+				position: fixed;
+				width: 200px;
+				z-index: 2;
+			}
+
+			#reduced-motion {
+				color: red;
+				display: none;
+				padding: 10px 0;
+			}
+
+			#settings details summary {
+				display: block;
+				padding: 4px 0;
+			}
+
+			#settings details div div {
+				padding: 12px 0;
+			}
+
+			#settings details div div:not(:last-child) {
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+			}
+
+			@media (prefers-color-scheme: dark) {
+				:root {
+					--background-color: rgb(30, 30, 30);
+					--text-color: rgb(230, 230, 230);
+				}
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				#reduced-motion {
+					display: block;
+				}
+
+				#settings details > div > div {
+					opacity: 0.5;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="settings">
+			<details>
+				<summary>Settings</summary>
+				<div id="reduced-motion">
+					Disabled due to <code>prefers-reduced-motion: reduce</code>.
+				</div>
+				<div>
+					<div>
+						<label for="use-blur">Enable blur</label>
+						<input id="use-blur" type="checkbox">
+					</div>
+					<div>
+						<label for="duration">Duration (ms)</label>
+						<input id="duration" max="5000" min="1" type="number" value="800">
+					</div>
+					<div>
+						<label for="curve">Curve</label>
+						<select id="curve">
+							<option value="0">Linear</option>
+							<option value="1">Quad</option>
+							<option value="2">Cubic</option>
+							<option value="3">Quart</option>
+							<option value="4">Quint</option>
+							<option selected value="5">Expo</option>
+							<option value="6">Circ</option>
+							<option value="7">Sine</option>
+							<option value="8">Bounce</option>
+							<option value="9">Back</option>
+							<option value="10">Elastic</option>
+						</select>
+					</div>
+				</div>
+			</details>
+		</div>
+
+		<main>
+			<div id="content">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque rhoncus lacinia ipsum ut feugiat. Nam vel turpis at metus suscipit semper et a nisi. Cras eget elit in ante vestibulum condimentum eget in sapien. Praesent sollicitudin mauris turpis, id convallis arcu faucibus vitae. Sed cursus erat at mi tempor sagittis. Suspendisse suscipit vitae velit eu dapibus. Donec dignissim risus et lectus vulputate, a aliquam dui facilisis. Integer viverra urna vel tortor ullamcorper, elementum accumsan enim ornare. Suspendisse tincidunt sodales nunc eu efficitur. Donec dapibus sapien eu mauris egestas rhoncus. Nulla efficitur tempor ipsum mollis hendrerit. Pellentesque sit amet metus nunc. Morbi efficitur sit amet risus rutrum aliquet. Fusce maximus libero non urna vehicula aliquam. Cras accumsan pulvinar ipsum in efficitur.
+				</p>
+				<p>
+					Nunc ultrices sit amet sapien vel hendrerit. Nullam elit magna, scelerisque quis est finibus, posuere ultrices tortor. Nullam commodo ut velit eget fermentum. Morbi et quam neque. Pellentesque ullamcorper lectus et risus varius iaculis. Curabitur semper volutpat odio vitae efficitur. Nullam vel quam a massa gravida varius vel id lacus. In sodales porttitor erat, at vehicula lorem laoreet quis. Phasellus accumsan nulla erat, a aliquet elit faucibus a. Donec sit amet sapien sit amet eros sollicitudin cursus nec quis tortor. Praesent mattis, leo bibendum semper consequat, velit dui ultricies arcu, ut pulvinar ex augue vitae nisl. Morbi ornare vestibulum ipsum, quis dignissim turpis elementum in. Vivamus eu sem dignissim, placerat nisi at, laoreet metus. Etiam risus velit, vestibulum eu aliquam nec, viverra quis sem. Sed laoreet consequat sem vel consequat. Phasellus sed ante ipsum.
+				</p>
+				<p>
+					Vivamus a dolor non lacus viverra imperdiet vitae vitae nunc. Donec mattis leo nunc, eget fringilla arcu aliquet nec. Integer laoreet, erat vitae tempor consectetur, nibh lacus convallis dui, eget malesuada libero erat in nisl. Donec condimentum nec sem et mollis. Morbi accumsan, massa ut scelerisque molestie, leo leo ornare ante, non imperdiet nisl lorem ut ante. Suspendisse non arcu at turpis mollis vehicula. Vivamus id mi mauris. Nulla et egestas massa.
+				</p>
+				<p>
+					Phasellus vitae nibh quis urna dictum posuere. Curabitur quis nulla et elit feugiat aliquam vel quis nunc. Praesent placerat venenatis interdum. Aliquam at ligula volutpat, sollicitudin sem id, tincidunt nibh. Vestibulum a odio id metus accumsan condimentum. Phasellus maximus sapien arcu, vel faucibus massa tristique nec. Duis ullamcorper dui nec ligula dignissim viverra. Nam et accumsan nibh. Quisque posuere arcu a vestibulum gravida.
+				</p>
+				<p>
+					Vestibulum non turpis et enim pretium vulputate eget et dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mollis libero neque, sit amet rhoncus dui eleifend sed. Fusce erat lectus, feugiat sit amet felis in, ullamcorper elementum massa. Sed placerat vitae lacus a lacinia. Donec vel euismod sapien. Pellentesque blandit porttitor erat, id lacinia purus iaculis ut. Phasellus egestas, lectus vel laoreet viverra, diam dui sodales neque, sed scelerisque justo arcu sit amet sem. Integer porta suscipit nibh id dignissim. Nunc a erat tempor felis bibendum fringilla quis sed metus.
+				</p>
+				<p>
+					Suspendisse id nunc ac risus blandit maximus eget sed turpis. Vestibulum et arcu nec ante tincidunt finibus. Cras id purus ut urna malesuada dictum. Duis euismod eleifend dolor, nec commodo lectus ultricies id. Proin at arcu rutrum, ornare turpis sed, luctus libero. Morbi fermentum odio eget euismod interdum. Etiam rhoncus urna ex, at sagittis massa sagittis vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+				</p>
+				<p>
+					Morbi nisl metus, imperdiet at venenatis a, iaculis sed sem. Vivamus orci mauris, iaculis sed ligula non, finibus aliquam justo. Duis iaculis eu lorem eu congue. Duis eu molestie purus. Maecenas non faucibus eros. In sollicitudin augue luctus vehicula rhoncus. Etiam vel eros vel arcu luctus mollis ut facilisis sem. Nullam enim odio, luctus et turpis vel, porta finibus turpis. Morbi rhoncus justo sed enim commodo auctor. Ut vel nunc arcu. Proin eget quam purus. Donec nulla nulla, congue non scelerisque ac, aliquet quis arcu. Nullam ac malesuada urna. Sed vehicula, sem a mattis ultricies, sem est vehicula odio, sit amet euismod ex nisl pellentesque nibh. Sed lacinia risus quis malesuada laoreet. Nam sit amet vestibulum metus.
+				</p>
+				<p>
+					Praesent ut interdum erat. Nunc nisl orci, aliquet non efficitur at, luctus et mauris. Cras maximus mi eros. Proin molestie vitae mauris vitae aliquam. Nulla commodo purus vitae tristique varius. Nullam in turpis interdum, tristique tellus quis, bibendum risus. Donec libero mi, sollicitudin ac egestas id, lacinia sit amet odio. Suspendisse potenti. Nam fringilla vitae arcu et posuere. In suscipit quam sit amet suscipit ultricies. Quisque maximus, felis cursus aliquet ullamcorper, erat eros pretium lectus, vel rhoncus dui tellus vitae felis. Maecenas vel nunc nisl. Aenean at mauris vitae ante maximus vehicula a a lectus.
+				</p>
+				<p>
+					Aenean a scelerisque ligula. Nulla ac euismod lectus. Suspendisse vitae lobortis enim, sit amet vulputate nibh. Ut quis enim non lorem accumsan fringilla. Praesent consectetur, ipsum at ultrices dictum, dui mi aliquam dui, quis consequat diam ex ac turpis. Vestibulum vestibulum pretium tellus at vulputate. Cras a fringilla turpis. Duis et tortor nunc. Vestibulum ac tortor tincidunt lacus porttitor sagittis ac eget est.
+				</p>
+				<p>
+					Mauris vestibulum, erat hendrerit rutrum pulvinar, nulla nisl interdum nibh, sed congue dolor orci in lacus. Suspendisse tempus justo in ultrices tristique. In non gravida neque. Maecenas bibendum metus mi, quis molestie eros consectetur non. Phasellus consectetur varius orci sit amet finibus. Morbi mattis, neque vel aliquam hendrerit, justo dui fermentum nulla, eu tempor ante mauris eu magna. Morbi tincidunt dui enim, sed facilisis lectus elementum sed. Maecenas vulputate ante non facilisis tincidunt. Aliquam et est ac lectus laoreet pretium nec non ligula. Sed commodo dolor et risus elementum, eget sagittis nisl ultrices. Quisque nec erat massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				</p>
+				<p>
+					Vestibulum orci massa, sollicitudin vel nunc ac, molestie mattis metus. Aenean venenatis at risus nec molestie. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas et ex eleifend, mollis elit sit amet, semper ipsum. Morbi consectetur, velit eget elementum cursus, ex arcu pellentesque leo, sed vulputate mi felis id nisi. Sed mollis fringilla risus, a pulvinar enim dictum at. Cras volutpat lorem mauris, ut rutrum enim consequat nec. Pellentesque blandit nunc massa, nec ultrices ligula lacinia non. Aenean vel metus eget metus ornare consequat et non enim. Nunc et leo et mauris sagittis vestibulum vitae in tortor. Morbi a eros eget lectus interdum condimentum lobortis a magna.
+				</p>
+				<p>
+					Integer maximus, leo sagittis feugiat mattis, sapien urna fermentum mi, nec congue sem mauris et tellus. Curabitur nisl mi, imperdiet sit amet ligula ut, auctor dictum lacus. Duis porttitor augue vitae condimentum imperdiet. Cras blandit massa ac molestie sollicitudin. Integer accumsan scelerisque tincidunt. Nulla vitae volutpat nibh, ac luctus orci. Maecenas nec ultricies dolor, quis pharetra mi. Nunc vel orci eget augue cursus viverra. Mauris imperdiet mollis ullamcorper.
+				</p>
+				<p>
+					Nunc rutrum odio ac libero sodales, in tincidunt enim accumsan. Integer dui enim, scelerisque id magna a, efficitur eleifend velit. Vivamus volutpat feugiat urna, id porta arcu facilisis eu. Suspendisse hendrerit orci quis leo sollicitudin, a consectetur libero viverra. Mauris felis neque, ullamcorper id sapien ultricies, porta gravida risus. Aenean ac ex pretium, sollicitudin odio eget, sagittis purus. Proin velit ipsum, ullamcorper eget libero eu, aliquam egestas elit. Praesent molestie viverra tincidunt. Nam velit dui, mattis vel mi quis, hendrerit posuere justo. Sed eleifend aliquet eros, eget semper odio tristique sit amet. In congue nibh odio, sed elementum felis rutrum sed. Mauris mollis, tellus eget luctus facilisis, elit turpis facilisis dui, sed congue justo urna ac odio.
+				</p>
+				<p>
+					Praesent auctor lobortis eleifend. Nam convallis ligula justo. Nunc a erat eu arcu consectetur ultricies. Sed et diam dui. Vivamus tristique faucibus nunc. Maecenas nec velit ornare turpis maximus eleifend sit amet vel sapien. Fusce auctor et risus non egestas. Sed condimentum scelerisque massa eu malesuada. Nunc euismod, arcu eget varius malesuada, nulla mi accumsan ex, id fermentum sapien tellus eget felis. Cras facilisis risus sed maximus dignissim.
+				</p>
+				<p>
+					Maecenas posuere efficitur libero et rhoncus. Nullam mi nisi, malesuada nec tortor eget, convallis dapibus turpis. Morbi ac metus id mi dignissim iaculis. Phasellus fringilla nibh mauris, eget vulputate velit consequat non. Proin a arcu sit amet metus sodales blandit eu id nunc. Nam faucibus quis enim eu laoreet. Maecenas a velit sit amet ligula dictum ultricies. Etiam ut euismod odio, eu tincidunt dui. Pellentesque porttitor finibus auctor. Duis luctus dignissim libero, in pretium ante feugiat vel. Proin mollis mattis quam, at placerat ante malesuada ac. Quisque lacinia volutpat vulputate. Fusce tempor feugiat dui, non dictum lorem consectetur sed. Proin volutpat blandit nisi, eu vehicula turpis porta molestie.
+				</p>
+				<p>
+					Curabitur ipsum odio, commodo sed urna ac, luctus molestie nisi. Sed venenatis ex eros, placerat fringilla tortor sollicitudin non. Sed eget tincidunt arcu, mollis rutrum nibh. Duis eget imperdiet lorem, vel commodo erat. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque elementum mauris eget nulla vulputate ornare. In hac habitasse platea dictumst. Nullam quis interdum enim. Vivamus dapibus turpis nulla, vitae pellentesque erat lacinia ac. Phasellus ultrices mi congue, ultricies purus et, auctor arcu. Suspendisse ornare cursus porttitor. Sed luctus pulvinar mi, fringilla posuere nulla viverra sed. Donec mollis porttitor mauris eu molestie.
+				</p>
+			</div>
+		</main>
+
+		<script type="module">
+			import easing, { EasingType, EasingCurve} from './easing.js'
+
+			let disableAnimation = false
+			const setReducedMotion = () => disableAnimation = matchMedia('(prefers-reduced-motion: reduce').matches
+
+			addEventListener('DOMContentLoaded', setReducedMotion)
+			addEventListener('focus', setReducedMotion)
+
+			//
+
+			const BLUR_STRENGTH = 2
+
+			const curve = document.querySelector('#curve')
+			const duration = document.querySelector('#duration')
+			const useBlur = document.querySelector('#use-blur')
+			const main = document.querySelector('main')
+			
+			let scrollHeight = 0
+			let scrollStart = scrollY || window.pageYOffset
+			let scrollDestination = scrollStart
+			let scrollPosition = scrollDestination
+			let animationPosition = 1
+
+			const tick = () => {
+				requestAnimationFrame(tick)
+
+				if (scrollHeight != main.scrollHeight) {
+					scrollHeight = main.scrollHeight
+					document.body.style.height = scrollHeight + 'px'
+				}
+
+				if (disableAnimation) {
+					main.scrollTop = pageYOffset
+				}
+				else if (animationPosition < 1) {
+					const dur = Math.max(+duration.value, 1)
+					const travel = scrollDestination - scrollStart
+					animationPosition = Math.min(animationPosition + (1000 / 60) / dur, 1)
+
+					const ease = easing(animationPosition, EasingType.OUT, curve.value|0)
+					scrollPosition = scrollStart + (travel * ease)
+					main.scrollTop = scrollPosition
+
+					const blurValue = useBlur.checked ? BLUR_STRENGTH - (ease * BLUR_STRENGTH) : 0
+					main.style.filter = `blur(${blurValue}px)`
+				}
+			}
+		
+			tick()
+
+			//
+
+			addEventListener('scroll', () => {
+				animationPosition = 0
+				scrollStart = scrollPosition
+				scrollDestination = pageYOffset		
+			}, { passive: true })
+		</script>
+	</body>
+</html>
