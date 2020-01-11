@@ -1,11 +1,11 @@
 # Interpolated scrolling
 > Smooth scrolling on desktops
 
-Smooth scrolling isn't a new concept on the web. Smooth scrolling is often applied (implemented) to a site make it look more, well, smooth. Often helping when the page visually for scroll based effects like parallax 'background' images. Or perhaps the site is simply one giant `<canvas>` element and all the contents is rendered via WebGL.
+Smooth scrolling isn't a new concept on the web. Smooth scrolling is often applied (implemented) on a site make it look more, well, smooth. Often visually helping the page for scroll based effects like parallax background images. Or perhaps the site is simply one giant `<canvas>` element and all the contents is rendered via WebGL.
 
-Whatever the case, smooth scrolling is usually done via an entirely custom made implementation. Where the page listens to events like `mousewheel` and `key{down|pressed|up}` (for arrows) and performs all the scrolling via code.
+Whatever the case, smooth scrolling is usually done via an entirely custom made implementation. Where the Javascript listens to events like `mousewheel` and `key{down|pressed|up}` (for arrows) and performs all the scrolling via code.
 
-The problem with this however is that basic functionality and - more importantly - user preferences are quickly overlooked or ignored. Some of these are:
+The problem with this however is that basic functionality and – more importantly – user preferences are quickly overlooked or ignored. Some of these are:
 * **Middle mouse click scroll (aka auto-scrolling)**  
   A feature most popular on Windows machines. The user can click the middle mouse button to initiate auto-scrolling and move the mouse up or down to change the scroll speed.
 * **Page up/Page down/Home/End**  
