@@ -11,9 +11,9 @@ The problem with this however is that basic functionality and – more important
 * **Page up/Page down/Home/End**  
   A personal pet peeve. These buttons tend to be entirely forgotten on sites using custom scrolling implementations. Showing no effect when pressed. :(
 * **Mouse wheel sensitivity**  
-  The user may have set their mouse wheel sensitivty/speed to a non-default value. For some users a single nudge on the wheel may scroll a few lines of text. For others it may scroll an entire screen worth! (This goes for trackpads as well.)
+  The user may have set their mouse wheel sensitivity/speed to a non-default value. For some users a single nudge on the wheel may scroll a few lines of text. For others it may scroll an entire screen worth! This goes for trackpads as well.
 * **`prefers-reduced-motion: reduce` (up for discussion)**  
-  There's a debate going whether smooth scrolling should be disabled when the user has enabled *reduced motion*.
+  Up for debate: some believe smooth scrolling should be disabled when the user has enabled *reduced motion*.
 
 The code in this repository examines an implementation for smooth scrolling: interpolated scrolling. Using the scroll position of `window`, interpolating its changes and applies it to some element's `scrollTop`.
 
