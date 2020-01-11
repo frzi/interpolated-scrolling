@@ -1,6 +1,10 @@
 # Interpolated scrolling
 > Smooth scrolling on desktops
 
+## Demo
+[Try it out on your desktop](https://frzi.github.io/interpolated-scrolling).
+
+## About
 Smooth scrolling isn't a new concept on the web. Smooth scrolling is often applied (implemented) on a site make it look more, well, smooth. Often visually helping the page for scroll based effects like parallax background images. Or perhaps the site is simply one giant `<canvas>` element and all the contents is rendered via WebGL.
 
 Whatever the case, smooth scrolling is usually done via an entirely custom made implementation. Where the Javascript listens to events like `mousewheel` and `key{down|pressed|up}` (for arrows) and performs all the scrolling via code.
