@@ -2,6 +2,8 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
 		<title>interpolated scrolling</title>
 		<style>
 			:root {
@@ -49,7 +51,7 @@
 
 			#settings {
 				background-color: rgba(0, 0, 0, 0.5);
-				color: var(--text-color);
+				color: white;
 				inset-block-start: 3px;
 				inset-inline-start: 3px;
 				padding: 10px;
@@ -132,7 +134,7 @@
 		</div>
 
 		<main>
-			<div id="content">
+			<div id="content" contenteditable>
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque rhoncus lacinia ipsum ut feugiat. Nam vel turpis at metus suscipit semper et a nisi. Cras eget elit in ante vestibulum condimentum eget in sapien. Praesent sollicitudin mauris turpis, id convallis arcu faucibus vitae. Sed cursus erat at mi tempor sagittis. Suspendisse suscipit vitae velit eu dapibus. Donec dignissim risus et lectus vulputate, a aliquam dui facilisis. Integer viverra urna vel tortor ullamcorper, elementum accumsan enim ornare. Suspendisse tincidunt sodales nunc eu efficitur. Donec dapibus sapien eu mauris egestas rhoncus. Nulla efficitur tempor ipsum mollis hendrerit. Pellentesque sit amet metus nunc. Morbi efficitur sit amet risus rutrum aliquet. Fusce maximus libero non urna vehicula aliquam. Cras accumsan pulvinar ipsum in efficitur.
 				</p>
@@ -185,7 +187,7 @@
 		</main>
 
 		<script type="module">
-			import easing, { EasingType, EasingCurve} from './easing.js'
+			import easing, { EasingType, EasingCurve } from './easing.js'
 
 			let disableAnimation = false
 			const setReducedMotion = () => disableAnimation = matchMedia('(prefers-reduced-motion: reduce').matches
